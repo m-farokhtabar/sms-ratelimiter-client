@@ -1,28 +1,4 @@
-<!-- <div style="display: flex; align-items: center;">
-    <h2>Live rate of account(pre sec): </h2>
-    <h3 style="color:red;padding-left: 5px;">{{currentAccountRate}}</h3>
-</div>
-<hr/>
-<div>
-    <h3>live rate of Phone number(pre sec):</h3>
-    <input type="text" placeholder="Enter phone number" (change)="loadCurrentRateOfPhone($event)"/>
-    <div style="display: flex; align-items: center;">
-        <h2>Current Period Of {{phoneNumber}}: </h2>
-        <h3 style="color:red;padding-left: 5px;">{{currentPhoneNumberRate}}</h3>
-    </div>
-    <div style="display: flex; align-items: center;">
-        <h2>Count Of processed Message of {{phoneNumber}}: </h2>
-        <h3 style="color:red;padding-left: 5px;">{{PhoneNumberRate}}</h3>
-    </div>    
-    <label for="dateTime">From:</label>
-    <input type="datetime-local" id="dateTimeFrom" [(ngModel)]="fromDate">
-    <label for="dateTime">To:</label>
-    <input type="datetime-local" id="dateTimeTo" [(ngModel)]="toDate">
-    <button (click)="loadRateByDate()">Show phone rate</button>
-</div> -->
-
-
-<body class="container mt-4">
+<div class="container mt-4">
     <div class="card shadow p-4 mb-4">
         <h4 class="mb-3">Live Rate of Account (per sec): <span class="text-danger">{{currentAccountRate}}</span></h4>
     </div>
@@ -30,7 +6,8 @@
     <div class="card shadow p-4">        
         <div class="mb-3">
             <label for="dateTimeFrom" class="form-label">Phone Number:</label>
-            <input type="text" class="form-control" placeholder="Enter phone number" (change)="loadCurrentRateOfPhone($event)">
+            <input type="text" class="form-control  mb-3" placeholder="Enter phone number" #phoneInput>
+            <button class="btn btn-primary w-100 mb-3" (click)="loadCurrentRateOfPhone(phoneInput.value)">Show Live Rate of Phone Number</button>
         </div>
         
         <div class="mb-3">
@@ -47,9 +24,9 @@
                 <input type="datetime-local" id="dateTimeTo" class="form-control" [(ngModel)]="toDate">
             </div>
         </div>
-        <button class="btn btn-primary w-100 mb-3" (click)="loadRateByDate()">Show Phone Rate</button>
+        <button class="btn btn-primary w-100 mb-3" (click)="loadRateByDate()" [disabled]="!phoneNumber">Show Processed Messages for Phone Number</button>
         <div class="mb-3">
             <h5>Number of Processed Messages for Phone Number <span class="text-primary">{{phoneNumber}}</span>: <span class="text-danger">{{PhoneNumberRate}}</span></h5>
         </div>
     </div>    
-</body>
+</div>
