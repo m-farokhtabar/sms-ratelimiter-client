@@ -1,27 +1,56 @@
-# SmsRatelimiterClient
+# Message Rate Monitoring Web UI
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.3.
+This project is an Angular-based web interface designed for monitoring message processing rates. The UI includes two main sections: **per account** and **per number**, providing real-time insights into message throughput and offering filtering options based on account number and date/time ranges.
 
-## Development server
+## Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- **Two Sections:**
+  - **Per Account**: Displays message processing rates and details per account.
+  - **Per Number**: Displays message processing rates and details per number.
 
-## Code scaffolding
+- **Real-time Message Processing Metrics:**
+  - Displays the rate of messages being processed in messages per second.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **Filtering Options:**
+  - **Per Number**: Filter messages by a specific account or phone number.
+  - **Per Date/Time Range**: Filter messages by date and time to view historical processing rates.
 
-## Build
+## Setup and Configuration
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Prerequisites
 
-## Running unit tests
+Before setting up the project, ensure you have the following installed on your local machine:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- **Node.js** (version 16 or higher)
+- **Angular CLI** (install globally if not already installed)
+- A **running Web API** service providing the message rate data.
 
-## Running end-to-end tests
+### Installation Steps
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+1. Clone the repository to your local machine:
 
-## Further help
+    ```bash
+    git clone <repository-url>
+    cd <project-folder>
+    ```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+2. Install the required dependencies using npm:
+
+    ```bash
+    npm install
+    ```
+
+3. Configure the Web API endpoint. Open the file `src/app/services/rate-limit-service.ts` and update the `apiUrl` variable to point to your Web API:
+
+    ```typescript
+    private apiUrl = 'https://localhost:7215/api/Message/';
+    ```
+
+    If your Web API is hosted at a different URL, replace `'https://localhost:7215/api/Message/'` with the appropriate URL.
+
+### Running the Application
+
+To start the application locally, run the following command:
+
+```bash
+ng serve
