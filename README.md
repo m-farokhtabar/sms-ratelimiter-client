@@ -47,6 +47,7 @@ Before setting up the project, ensure you have the following installed on your l
     ```
 
     If your Web API is hosted at a different URL, replace `'https://localhost:7215/api/Message/'` with the appropriate URL.
+4. **This program converts local datetime to UTC format**, so no further conversions are necessary.
 
 ### Running the Application
 
